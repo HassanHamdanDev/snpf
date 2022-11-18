@@ -1,0 +1,32 @@
+.chat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid whitesmoke;
+    cursor: pointer;
+}
+
+.chat:hover {
+    background-color: #e9eaeb;
+    opacity: 0.8;
+}
+
+.chat__details {
+    flex: 1;
+    padding-left: 5px;
+}
+
+.chat__image {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.chat__readIcon {
+    color: green;
+}
+
+.chat__details>span {
+    font-size: 20px;
+    font-weight: 500;
+}

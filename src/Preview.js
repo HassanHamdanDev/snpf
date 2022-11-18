@@ -17,10 +17,13 @@ import { db, storage } from './firebase';
 import { ref, getDownloadURL, uploadString } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
+import { selectUser } from './features/appSlice';
+
 export default function Preview() {
   const cameraImage = useSelector(selectCameraImage);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     if (!cameraImage) {
@@ -40,15 +43,14 @@ export default function Preview() {
         // add post to firestore
         setDoc(doc(db, 'posts', id), {
           imageUrl: url,
-          username: 'test',
+          username: user.username,
           read: false,
-          profilePic: '',
+          profilePic:  user.profilePic,
           timestamp: serverTimestamp(),
         });
-        // navigate('/chats');
+        navigate('/chats');
       });
     });
-
   };
 
   return (
